@@ -26,6 +26,7 @@ Route::get('/icons/fontawesome', 'PagesController@fontawesome');
 Route::get('/icons/lineawesome', 'PagesController@lineawesome');
 Route::get('/icons/socicons', 'PagesController@socicons');
 Route::get('/icons/svg', 'PagesController@svg');
+Route::get('/config', 'DeviceController@config');
 
 // Quick search dummy route to display html elements in search dropdown (header search)
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
