@@ -21,6 +21,7 @@ body {
 
 {{-- Scripts Section --}}
 @section('scripts')
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 <script>
 
 // One of my first <canvas> experiments, woop! :D 

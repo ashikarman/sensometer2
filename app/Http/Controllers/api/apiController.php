@@ -13,10 +13,10 @@ class apiController extends Controller
   {
     $data=$request->data;
     $trim = explode("|", $data);
-
-
-
     $config = new deviceConfig;
+    $flight = deviceConfig::where('device_id',$trim[1]);
+    
+   
     $config->status = $trim[0];
     $config->device_id = $trim[1];
     $config->device_type = $trim[2];
