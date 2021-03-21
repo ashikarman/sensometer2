@@ -16,8 +16,7 @@ class CreateSensorsTable extends Migration
         Schema::create('sensors', function (Blueprint $table) {
             $table->id();
             $table->string('sensor_name')->nullable();
-            $table->integer('slave_low')->nullable();
-            $table->integer('slave_high')->nullable();
+            $table->integer('slave_id')->nullable();
             $table->unsignedBigInteger('device_id')->nullable();
             $table->foreign('device_id')->references('id')
             ->on('devices')
