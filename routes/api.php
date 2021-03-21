@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/deviceConfig', 'api\apiController@DeviceConfigApi');
 Route::post('/parameterList', 'api\ParameterListController@parameterList');
+
+Route::post('/deviceConfig', 'api\apiController@DeviceConfigApi');

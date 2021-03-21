@@ -8,15 +8,15 @@ use App\Models\deviceConfig;
 class apiController extends Controller
 {
 //API Fromat
-  //1001|cms|1-2-3-4|Banani|Gulistan|faisal.com|sakil.com|8088|1068|AqualinkBD||0|1|0|yes|faisal|lafizBro|fahim|10|2|aq_ltd1|aq_ltd_1|aq_ltd_2|aq_ltd_2
+  //1|1001|cms|1-2-3-4|Banani|Gulistan|faisal.com|sakil.com|1069|hi_tech_park|0|0|1|0|8080|faisal|lafizPotato|fahim|10|aq_ltd1|aq_ltd_1|aq_ltd_1|aq_ltd_1|aq_ltd_1|aq_ltd_1
   public function DeviceConfigApi(Request $request)
   {
     $data=$request->data;
     $trim = explode("|", $data);
-
-
-
     $config = new deviceConfig;
+    $flight = deviceConfig::where('device_id',$trim[1]);
+    
+   
     $config->status = $trim[0];
     $config->device_id = $trim[1];
     $config->device_type = $trim[2];
