@@ -8,7 +8,7 @@ use App\Models\ParameterList;
 
 class ParameterListController extends Controller
 {
-    public function parameterList(Request $request)
+    public function parameterList()
     {
         $parameter = ParameterList::all();
         return $parameter;
