@@ -23,4 +23,9 @@ Route::get('/parameterList', 'api\ParameterListController@parameterList');
 Route::get('/slaveRange', 'api\ParameterListController@slaveRange');
 
 
-Route::post('/deviceConfig', 'api\apiController@DeviceConfigApi');
+
+Route::post('esp32/deviceConfig', 'api\apiController@DeviceConfigApi');
+
+
+
+Route::post('esp32/data', 'api\deviceDataController@dataTrim');

@@ -13,10 +13,11 @@ class apiController extends Controller
   {
     $data=$request->data;
     $trim = explode("|", $data);
+
     $config = new deviceConfig;
-    $flight = deviceConfig::where('device_id',$trim[1]);
+    $checkRepeat = deviceConfig::where('device_id',$trim[1])->first();
     
-   
+   if(!$checkRepeat && $trim[10]=="1"){
     $config->status = $trim[0];
     $config->device_id = $trim[1];
     $config->device_type = $trim[2];
@@ -47,6 +48,10 @@ class apiController extends Controller
 
   
     $config->save();
-    return $trim[3];
+    return $data;
+   }
+   else{
+    return "data not inserted";
+   }
   }
 }
