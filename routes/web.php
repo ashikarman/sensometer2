@@ -40,4 +40,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::get('/config', 'DeviceController@config');
 
 
-///API'S/////
+
+Route::get('/update-parameter-list', 'DeviceController@UpdateParameterIndex')->name('update-parameter-list');
+Route::get('/parameter-db', 'DeviceController@ParametersToDb')->name('parameter-db');

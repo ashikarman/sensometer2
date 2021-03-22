@@ -6,7 +6,9 @@
 
     {{-- Dashboard 1 --}}
 
-<button>hello</button>
+
+
+<a href="{{route('parameter-db')}}">banned</a>
 <button>hello2</button>
 
 @endsection

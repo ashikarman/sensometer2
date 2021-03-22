@@ -18,7 +18,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::post('esp32/deviceConfig', 'api\apiController@DeviceConfigApi');
 Route::post('/parameterList', 'api\ParameterListController@parameterList');
+
 
 Route::post('esp32/data', 'api\deviceDataController@dataTrim');
