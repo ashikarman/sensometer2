@@ -8,8 +8,8 @@
 
 
 
-<a href="{{route('parameter-db')}}">banned</a>
-<button>hello2</button>
+<a class="btn btn-success" href="{{route('parameter-db')}}">Parameter List Update</a>
+<a class="btn btn-info" href="{{route('SlaveToDb')}}">Slave Range Update</a>
 
 @endsection
 
