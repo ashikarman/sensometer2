@@ -25,7 +25,7 @@ public function UpdateParameterIndex()
 public function ParametersToDb()
 {
     // $client = new GuzzleHttp\Client();
-    $parameters = Http::get('http://cmsnew.aqualinkbd.com/api/parameterList');
+    $parameters = Http::get('http://testinventoryapi.aqualinkbd.com/api/parameter_list');
     // $para = $parameters->getBody();
     // json_decode($parameters);
     $responseData = json_decode($parameters->getBody(), true);
@@ -49,15 +49,15 @@ public function ParametersToDb()
 public function SlaveToDb()
 {
     // $client = new GuzzleHttp\Client();
-    $parameters = Http::get('http://cmsnew.aqualinkbd.com/api/slaveRange');
+    $parameters = Http::get('http://testinventoryapi.aqualinkbd.com/api/sensorList');
     // $para = $parameters->getBody();
     // json_decode($parameters);
     $responseData = json_decode($parameters->getBody(), true);
     foreach ($responseData as $para) {
         $slv_range = new SlaveRange;
-        $slv_range->slave_low = $para['slave_low'];
-        $slv_range->slave_high = $para['slave_high'];
-        $slv_range->sensor_name = $para['sensor_name'];
+        $slv_range->slave_low = $para['start_address'];
+        $slv_range->slave_high = $para['end_address'];
+        $slv_range->sensor_name = $para['name'];
         $slv_range->save();
     
      
