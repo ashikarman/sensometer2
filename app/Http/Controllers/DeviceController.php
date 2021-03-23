@@ -29,14 +29,22 @@ public function ParametersToDb()
     // $para = $parameters->getBody();
     // json_decode($parameters);
     $responseData = json_decode($parameters->getBody(), true);
-    foreach ($responseData as $para) {
-        $paralist = new ParameterList;
-        $paralist->parameter_name = $para['parameter_name'];
-        $paralist->parameter_id = $para['parameter_id'];
-        $paralist->save();
-    
-     
+    if ($responseData != null) {
+        foreach ($responseData as $para) {
+            $checkParameter = ParameterList::where('parameter_name','=',$para['parameter_name'])->where('parameter_id','=',$para['parameter_id'])->first();
+            if ($checkParameter == null) {
+                $paralist = new ParameterList;
+                $paralist->parameter_name = $para['parameter_name'];
+                $paralist->parameter_id = $para['parameter_id'];
+                $paralist->unit = $para['units'];
+                $paralist->save();
+            }
+
+        
+         
+        }
     }
+    
 
     return redirect()->back()->with("type","success")->with("message","parameter list updated");
     
@@ -53,15 +61,23 @@ public function SlaveToDb()
     // $para = $parameters->getBody();
     // json_decode($parameters);
     $responseData = json_decode($parameters->getBody(), true);
-    foreach ($responseData as $para) {
-        $slv_range = new SlaveRange;
-        $slv_range->slave_low = $para['start_address'];
-        $slv_range->slave_high = $para['end_address'];
-        $slv_range->sensor_name = $para['name'];
-        $slv_range->save();
+    if ($responseData != null) {
+        foreach ($responseData as $para) {
+            $checkSensor = SlaveRange::where('slave_low','=',$para['start_address'])->where('slave_high','=',$para['end_address'])->where('sensor_name','=',$para['name'])->first();
+            if ($checkSensor == null) {
+                $slv_range = new SlaveRange;
+                $slv_range->slave_low = $para['start_address'];
+                $slv_range->slave_high = $para['end_address'];
+                $slv_range->sensor_name = $para['name'];
+                $slv_range->save();
+            }
+           
     
-     
+        
+         
+        }
     }
+
 
     return redirect()->back()->with("type","success")->with("message","Slave map updated");
     

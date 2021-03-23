@@ -17,6 +17,7 @@ class CreateParameterListsTable extends Migration
             $table->id();
             $table->integer('parameter_id')->nullable();
             $table->string('parameter_name')->nullable();
+            $table->string('unit')->nullable();
             $table->timestamps();
         });
     }
