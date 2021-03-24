@@ -183,7 +183,7 @@ $bc=substr($join, 0, -1);
    return $config->status."|".$config->device_id."|".$config->device_type."|".$config->address1."|"
     .$config->address2."|".$config->base_url."|".$config->sub_url."|".$config->device_db_id."|".$config->company."|"
     .$config->sync_status."|".$config->gsm_status."|".$config->wifi_status."|".$config->mqtt_broker."|".$config->port."|"
-    .$config->mqtt_user_name."|".$config->mqtt_pass."|".$config->device_password."|".$config->data_interval."|".$config->wifi1_ssid."|"
+    .$config->mqtt_user_name."|".$config->mqtt_pass."|".$config->device_password."|".$config->data_interval."|". $config->number_of_wifi."|".$config->wifi1_ssid."|"
     .$config->wifi1_pass."|".$config->wifi1_priority."|".$config->wifi2_ssid."|".$config->wifi2_pass."|".$config->wifi2_priority;
 
     // // deviceConfig::whereIn('device_id',$trim[1])->update($request->all);
@@ -201,7 +201,7 @@ $bc=substr($join, 0, -1);
    return $config->status."|".$config->device_id."|".$config->device_type."|".$config->address1."|"
     .$config->address2."|".$config->base_url."|".$config->sub_url."|".$config->device_db_id."|".$config->company."|"
     .$config->sync_status."|".$config->gsm_status."|".$config->wifi_status."|".$config->mqtt_broker."|".$config->port."|"
-    .$config->mqtt_user_name."|".$config->mqtt_pass."|".$config->device_password."|".$config->data_interval."|".$config->wifi1_ssid."|"
+    .$config->mqtt_user_name."|".$config->mqtt_pass."|".$config->device_password."|".$config->data_interval."|".$config->number_of_wifi."|".$config->wifi1_ssid."|"
     .$config->wifi1_pass."|".$config->wifi1_priority;
 
 
