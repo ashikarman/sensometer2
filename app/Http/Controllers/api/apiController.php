@@ -11,9 +11,11 @@ class apiController extends Controller
   //1|1001|cms|1-2-3-4|Banani|Gulistan|faisal.com|sakil.com|1069|hi_tech_park|0|0|1|0|8080|faisal|lafizPotato|fahim|10|aq_ltd1|aq_ltd_1|aq_ltd_1|aq_ltd_1|aq_ltd_1|aq_ltd_1
   public function DeviceConfigApi(Request $request)
   {
+
+    //array count 18,22,25
     $data=$request->data;
     $trim = explode("|", $data);
-$count = count($trim);
+    $count = count($trim);
 
 return $count;
     $config = new deviceConfig;
