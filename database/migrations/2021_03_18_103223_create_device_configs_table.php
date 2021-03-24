@@ -35,7 +35,9 @@ class CreateDeviceConfigsTable extends Migration
             $table->string('mqtt_user_name')->nullable();
             $table->string('mqtt_pass')->nullable();
             $table->string('device_password')->nullable();
+           
             $table->string('data_interval')->nullable();
+            $table->string('number_of_wifi')->nullable();
             $table->string('wifi1_ssid')->nullable();
             $table->string('wifi1_pass')->nullable();
             $table->string('wifi1_priority')->nullable();

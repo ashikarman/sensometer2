@@ -45,6 +45,7 @@ class deviceDataController extends Controller
      $config->value = $value[1];
      $config->device_timestamps = $trim[$count-1];
      $config->save();
+     return "Data Inserted";
    }
 
    else{
@@ -61,7 +62,7 @@ class deviceDataController extends Controller
   $config->value = $value[2];
   $config->device_timestamps = $trim[$count-1];
   $config->save();
-
+return "Data Inserted";
       
    }
       }

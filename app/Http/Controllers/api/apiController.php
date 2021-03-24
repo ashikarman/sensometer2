@@ -13,7 +13,9 @@ class apiController extends Controller
   {
     $data=$request->data;
     $trim = explode("|", $data);
+$count = count($trim);
 
+return $count;
     $config = new deviceConfig;
     $checkRepeat = deviceConfig::where('device_id',$trim[1])->first();
     
