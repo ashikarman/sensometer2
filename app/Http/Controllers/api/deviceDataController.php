@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DeviceData;
+use App\Models\Device;
 class deviceDataController extends Controller
 {
    public function dataTrim(Request $request)
@@ -22,8 +23,11 @@ class deviceDataController extends Controller
 
 
     $trim = explode("|", $array[$f]);
+
+    $device_id = Device::where("device_code",$trim[0])->first();
+    
     $count = count($trim);
-for($x=1;$x<$count;$x++){
+for($x=1;$x<$count-1;$x++){
    $config2 = new DeviceData;
     $checkRepeat = DeviceData::where('device_id',$trim[0])->first();
 
@@ -40,7 +44,7 @@ for($x=1;$x<$count;$x++){
       for($e=0;$e<=$slaveCount-1;$e++){
          if($e>0){
          $config = new DeviceData;
-         $config->device_id = $trim[0];
+         $config->device_id = $device_id->id;
 
 
          $sensorData1 = $slave[$e];
@@ -52,14 +56,15 @@ for($x=1;$x<$count;$x++){
      $config->value = $value[1];
      $config->device_timestamps = $trim[$count-1];
      $config->save();
-    print_r("success");
+   //  print_r("success");
 
    }
 
    else{
 
       $config1 = new DeviceData;
-      $config1->device_id = $trim[0];
+      // return $device_id->id;
+      $config1->device_id = $device_id->id;
 
       $sensorData1 = $slave[$e];
       $value1 = explode("-", $sensorData1);
@@ -70,7 +75,7 @@ for($x=1;$x<$count;$x++){
   $config1->value = $value1[2];
   $config1->device_timestamps = $trim[$count-1];
   $config1->save();
-#print_r("success");
+// print_r("success");
 
    }
 

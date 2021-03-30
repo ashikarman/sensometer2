@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\deviceConfig;
+use App\Models\Device;
 class apiController extends Controller
 {
 //API Fromat
@@ -20,11 +21,20 @@ class apiController extends Controller
     $config = new deviceConfig;
     $checkRepeat = deviceConfig::where('device_id',$trim[1])->first();
    //for array cont 26 first initialize 
+   
+    $checkDevice = Device::where('device_code',$trim[1])->first();
+if($checkDevice==null){
+  $device = new Device;
+$device->device_code  = $trim[1];
+$device->device_name = $trim[2];
+$device->save();
 
 
+}
    if(!$checkRepeat && $trim[10]=="1" && $count=='26'){
     $config->status = $trim[0];
     $config->device_id = $trim[1];
+
     $config->device_type = $trim[2];
     $config->slave_id = $trim[3];
     $config->address1 = $trim[4];
