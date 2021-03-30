@@ -15,9 +15,14 @@ class CreateDeviceDataTable extends Migration
     {
         Schema::create('device_data', function (Blueprint $table) {
             $table->id();
-            $table->string('device_id')->nullable();;
-            $table->string('slave_address')->nullable();;
-            $table->string('parameter_id')->nullable();;
+            $table->unsignedBigInteger('device_id')->nullable();
+
+            $table->foreign('device_id')->references('id')
+            ->on('devices')
+            ->onDelete('cascade');
+            
+            $table->string('slave_address')->nullable();
+            $table->string('parameter_id')->nullable();
             $table->string('value')->nullable();
             $table->string('device_timestamps')->nullable();
             $table->timestamps();

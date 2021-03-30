@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\api\Device;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,7 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/deviceConfig', 'api\apiController@DeviceConfigApi');
+
 Route::get('/parameterList', 'api\ParameterListController@parameterList');
 Route::get('/slaveRange', 'api\ParameterListController@slaveRange');
 
