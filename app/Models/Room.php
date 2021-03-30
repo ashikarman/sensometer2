@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     use HasFactory;
+
+    public function devices()
+    {
+        return $this->hasOne(Device::class);
+    }
 }

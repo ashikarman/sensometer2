@@ -44,3 +44,5 @@ Route::get('/config', 'DeviceController@config');
 Route::get('/update-parameter-list', 'DeviceController@UpdateParameterIndex')->name('update-parameter-list');
 Route::get('/parameter-db', 'DeviceController@ParametersToDb')->name('parameter-db');
 Route::get('/SlaveToDb', 'DeviceController@SlaveToDb')->name('SlaveToDb');
+
+Route::get('/dash_data','DataController@dashboard_data')->name('dashboard_data');

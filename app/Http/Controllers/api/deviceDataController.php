@@ -10,6 +10,10 @@ class deviceDataController extends Controller
    public function dataTrim(Request $request)
    {
     $data=$request->data;
+    $config = new DeviceData;
+    $config->slave_address;
+    $config->save();
+    return 'success';
 
     $array = explode("!", $data);
     $arrayCount = count($array);
