@@ -5,12 +5,12 @@
 @section('content')
 <div class="container">
     @foreach ($data as $user)
-        <h6>{{ $user->device_id }}</h6>
-        <h6>{{ $user->device_id }}</h6>
+        <h6>{{ $user->devices->device_name}}</h6>
+        <!-- <h6>{{ $user->device_id }}</h6> -->
     @endforeach
 </div>
 <div class="container">
-{{ $data->onEachSide(5)->links() }}
+<!-- {{ $data->links() }} -->
 </div>
 
 @endsection

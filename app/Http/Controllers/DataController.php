@@ -10,7 +10,8 @@ class DataController extends Controller
 {
     public function dashboard_data()
     {
-        $data = DeviceData::paginate(15);
+        $data = DeviceData::with('devices')->paginate(15);
+        return $data;
         return view('pages.dash_data',compact('data'));
     }
 }

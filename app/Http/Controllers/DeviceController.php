@@ -66,8 +66,8 @@ public function SlaveToDb()
             $checkSensor = SlaveRange::where('slave_low','=',$para['start_address'])->where('slave_high','=',$para['end_address'])->where('sensor_name','=',$para['name'])->first();
             if ($checkSensor == null) {
                 $slv_range = new SlaveRange;
-                $slv_range->slave_low = $para['start_address'];
-                $slv_range->slave_high = $para['end_address'];
+                $slv_range->slave_low = (int)$para['start_address'];
+                $slv_range->slave_high = (int)$para['end_address'];
                 $slv_range->sensor_name = $para['name'];
                 $slv_range->save();
             }

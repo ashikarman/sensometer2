@@ -15,8 +15,8 @@ class CreateSlaveRangesTable extends Migration
     {
         Schema::create('slave_ranges', function (Blueprint $table) {
             $table->id();
-            $table->string('slave_low')->nullable();
-            $table->string('slave_high')->nullable();
+            $table->integer('slave_low')->nullable();
+            $table->integer('slave_high')->nullable();
             $table->string('sensor_name')->nullable();
             $table->timestamps();
         });

@@ -6,17 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\deviceConfig;
 use App\Models\Device;
+use App\Models\Sensor;
+use App\Models\SlaveRange;
+
 class apiController extends Controller
 {
 //API Fromat
   //1|1001|cms|1-2-3-4|Banani|Gulistan|faisal.com|sakil.com|1069|hi_tech_park|0|0|1|0|8080|faisal|lafizPotato|fahim|10|aq_ltd1|aq_ltd_1|aq_ltd_1|aq_ltd_1|aq_ltd_1|aq_ltd_1
   public function DeviceConfigApi(Request $request)
   {
+    
 
     //array count 19,23,26
     $data=$request->data;
     $trim = explode("|", $data);
     $count = count($trim);
+    $sensor_name = SlaveRange::where('slave_low','<=',(int)$trim[3])->where('slave_high','>=',(int)$trim[3])->first();
     $join='';
     $config = new deviceConfig;
     $checkRepeat = deviceConfig::where('device_id',$trim[1])->first();
@@ -29,8 +34,34 @@ $device->device_code  = $trim[1];
 $device->device_name = $trim[2];
 $device->save();
 
+$sensoradd = new Sensor;
+
+ $sensoradd->sensor_name = $sensor_name->sensor_name;
+ $sensoradd->slave_id = $trim[3];
+ $sensoradd->device_id = $device->id;
+ $sensoradd->save();
+
 
 }
+
+if ($checkDevice!=null) {
+  $checkSensor = Sensor::where('slave_id',$trim[3])->where('device_id',$checkDevice->id)->get();
+if ($checkSensor == null) {
+
+ $sensoradd = new Sensor;
+ $sensoradd->sensor_name = $sensor_name->sensor_name;
+ $sensoradd->slave_id = $trim[3];
+ $sensoradd->device_id = $checkDevice->id;
+ $sensoradd->save();
+ 
+}
+}
+
+
+
+
+
+
    if(!$checkRepeat && $trim[10]=="1" && $count=='26'){
     $config->status = $trim[0];
     $config->device_id = $trim[1];
