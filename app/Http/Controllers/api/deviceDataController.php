@@ -14,8 +14,8 @@ class deviceDataController extends Controller
 
     $array = explode("!", $data);
     $arrayCount = count($array);
-    for($f=0;$f<$arrayCount;$f++){
-
+    for($f=0;$f<$arrayCount-1;$f++){
+// print_r($array);
 
     $trim = explode("|", $array[$f]);
 
@@ -23,6 +23,7 @@ class deviceDataController extends Controller
     
     $count = count($trim);
 for($x=1;$x<$count-1;$x++){
+   // print_r($trim);
    $config2 = new DeviceData;
     $checkRepeat = DeviceData::where('device_id',$trim[0])->first();
 
@@ -77,7 +78,7 @@ for($x=1;$x<$count-1;$x++){
       }
 
 
- return "success";
+//  return "success";
 
    }
 
@@ -95,5 +96,6 @@ for($x=1;$x<$count-1;$x++){
 
 }
 }
+return "success";
    }
 }
