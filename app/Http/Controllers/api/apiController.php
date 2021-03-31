@@ -60,8 +60,8 @@ if ($checkSensor == null) {
  
 }
 }
-
-$parameters_list = pvot_slave_parameter::where('slave_range_id',$sensor_name->id)->pluck('parameter_list_id');
+if (isset($sensoradd)) {
+  $parameters_list = pvot_slave_parameter::where('slave_range_id',$sensor_name->id)->pluck('parameter_list_id');
 foreach ($parameters_list as $para_list) {
   $check_slave = PvotSensoPara::where('parameter_id',$para_list)->where('sensor_id',$sensoradd->id)->first();
   // return $sensor_name->id;
@@ -71,6 +71,8 @@ foreach ($parameters_list as $para_list) {
     $new_pvot->sensor_id = $sensoradd->id;
     $new_pvot->save();
   }
+}
+
 }
 
 // $sensor_name->id
