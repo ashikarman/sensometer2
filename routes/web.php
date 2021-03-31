@@ -27,9 +27,22 @@ Route::get('/icons/lineawesome', 'PagesController@lineawesome');
 Route::get('/icons/socicons', 'PagesController@socicons');
 Route::get('/icons/svg', 'PagesController@svg');
 
+
 // Quick search dummy route to display html elements in search dropdown (header search)
 Route::get('/quick-search', 'PagesController@quickSearch')->name('quick-search');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+
+
+Route::get('/config', 'DeviceController@config');
+
+
+
+Route::get('/update-parameter-list', 'DeviceController@UpdateParameterIndex')->name('update-parameter-list');
+Route::get('/parameter-db', 'DeviceController@ParametersToDb')->name('parameter-db');
+Route::get('/SlaveToDb', 'DeviceController@SlaveToDb')->name('SlaveToDb');
+
+Route::get('/dash_data','DataController@dashboard_data')->name('dashboard_data');
