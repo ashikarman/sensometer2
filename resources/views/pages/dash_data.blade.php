@@ -6,12 +6,10 @@
 <div class="container">
     @foreach ($data as $user)
         <h6>{{ $user->devices->device_name}}</h6>
-        <!-- <h6>{{ $user->device_id }}</h6> -->
+      
     @endforeach
 </div>
-<div class="container">
-<!-- {{ $data->links() }} -->
-</div>
+
 
 @endsection
 

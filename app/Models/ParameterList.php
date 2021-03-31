@@ -14,6 +14,11 @@ class ParameterList extends Model
         return $this->belongsToMany(Sensor::class, 'pvot_senso_paras');
     }
 
+    public function slaveRanges()
+    {
+        return $this->belongsToMany(SlaveRange::class, 'pvot_slave_parameters');
+    }
+
 
 
 }

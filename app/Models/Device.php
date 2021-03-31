@@ -14,5 +14,10 @@ class Device extends Model
         return $this->belongsTo(Room::class);
     }
 
+    public function sensors()
+    {
+        return $this->hasMany(Sensor::class, 'device_id')->with('parameters');
+    }
+
 
 }

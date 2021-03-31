@@ -8,6 +8,9 @@ use App\Models\deviceConfig;
 use App\Models\Device;
 use App\Models\Sensor;
 use App\Models\SlaveRange;
+use App\Models\pvot_slave_parameter;
+use App\Models\PvotSensoPara;
+
 
 class apiController extends Controller
 {
@@ -21,6 +24,7 @@ class apiController extends Controller
     $data=$request->data;
     $trim = explode("|", $data);
     $count = count($trim);
+    
     $sensor_name = SlaveRange::where('slave_low','<=',(int)$trim[3])->where('slave_high','>=',(int)$trim[3])->first();
     $join='';
     $config = new deviceConfig;
@@ -56,6 +60,20 @@ if ($checkSensor == null) {
  
 }
 }
+
+$parameters_list = pvot_slave_parameter::where('slave_range_id',$sensor_name->id)->pluck('parameter_list_id');
+foreach ($parameters_list as $para_list) {
+  $check_slave = PvotSensoPara::where('parameter_id',$para_list)->where('sensor_id',$sensoradd->id)->first();
+  // return $sensor_name->id;
+  if ($check_slave == null) {
+    $new_pvot = new PvotSensoPara;
+    $new_pvot->parameter_id = (int)$para_list;
+    $new_pvot->sensor_id = $sensoradd->id;
+    $new_pvot->save();
+  }
+}
+
+// $sensor_name->id
 
 
 

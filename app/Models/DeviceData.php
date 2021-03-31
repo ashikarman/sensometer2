@@ -11,7 +11,9 @@ class DeviceData extends Model
 
     public function devices()
     {
-        return $this->belongsTo(Device::class,'device_id');
+        return $this->belongsTo(Device::class,'device_id')->with('sensors');
     }
+
+    
 
 }

@@ -11,7 +11,7 @@ class Sensor extends Model
 
     public function parameters()
     {
-        return $this->belongsToMany(ParameterList::class, 'pvot_senso_paras');
+        return $this->belongsToMany(ParameterList::class , 'pvot_senso_paras','parameter_id','id');
     }
 
     public function devices()
@@ -19,8 +19,5 @@ class Sensor extends Model
         return $this->hasOne(Device::class);
     }
 
-    public function sensors()
-    {
-        return $this->hasMany(Sensor::class, 'device_id');
-    }
+   
 }

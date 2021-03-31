@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePvotSensoParasTable extends Migration
+class CreatePvotSlaveParametersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreatePvotSensoParasTable extends Migration
      */
     public function up()
     {
-        Schema::create('pvot_senso_paras', function (Blueprint $table) {
+        Schema::create('pvot_slave_parameters', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('sensor_id')->nullable()->constrained();
-            $table->unsignedBigInteger('parameter_id')->nullable()->constrained();
+            $table->unsignedBigInteger('slave_range_id')->nullable();
+            $table->unsignedBigInteger('parameter_list_id')->nullable();
 
-            $table->foreign('sensor_id')->references('id')
-            ->on('sensors')
+            $table->foreign('slave_range_id')->references('id')
+            ->on('slave_ranges')
             ->onDelete('cascade');
-            $table->foreign('parameter_id')->references('id')
+            $table->foreign('parameter_list_id')->references('id')
             ->on('parameter_lists')
             ->onDelete('cascade');
             $table->timestamps();
@@ -35,6 +35,6 @@ class CreatePvotSensoParasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pvot_senso_paras');
+        Schema::dropIfExists('pvot_slave_parameters');
     }
 }
