@@ -2406,7 +2406,7 @@
     
           <div class="progress-wrapper">
             <div class="progress" style="height: 5px;">
-             <div class="progress-bar" style="width:20%; background-color: yellow;"></div>
+             <div class="progress-bar" style="width:20%; background-colorgit: yellow;"></div>
             </div>
            </div> 
     
